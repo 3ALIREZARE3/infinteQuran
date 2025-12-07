@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>InfiniteQuran</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#000000">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    
+    <!-- Fonts (Loaded from Google for caching, safe for offline after first load) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&family=Vazirmatn:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Top Navigation -->
+    <div class="top-bar">
+        <div class="logo">InfiniteQuran</div>
+        <button class="icon-btn" onclick="openSettings()">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.488.488 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 0 0-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.04.17 0 .34.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.04-.22 0-.45-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+        </button>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loader" class="loader-overlay">
+        <div class="spinner"></div>
+        <p id="loadingText">Loading Local Data...</p>
+    </div>
+
+    <!-- Main Feed -->
+    <div class="feed-container" id="feed"></div>
+
+    <!-- Settings Sheet -->
+    <div id="settingsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Settings</h2>
+                <button class="close-btn" onclick="closeSettings()">&times;</button>
+            </div>
+            
+            <div class="setting-item">
+                <label>Playback Mode</label>
+                <div class="toggle-group">
+                    <button class="t-btn active" id="btn-random" onclick="setMode('random')">Random</button>
+                    <button class="t-btn" id="btn-order" onclick="setMode('order')">Ordered</button>
+                </div>
+            </div>
+
+            <div class="setting-item">
+                <label>Translation</label>
+                <select id="langSelect" onchange="setLanguage(this.value)">
+                    <option value="en">English</option>
+                    <option value="fa">Persian (فارسی)</option>
+                    <option value="none">Hidden (Arabic Only)</option>
+                </select>
+            </div>
+
+            <div class="setting-item">
+                <button class="reset-btn" onclick="resetProgress()">Reset Progress</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
