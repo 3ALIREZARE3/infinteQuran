@@ -1,0 +1,98 @@
+:root {
+    --bg: #121212;
+    --card-bg: #1e1e1e;
+    --text: #e0e0e0;
+    --accent: #10b981;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    overflow: hidden; /* Hide main scrollbar */
+}
+
+.feed-container {
+    height: 100vh;
+    width: 100vw;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory; /* The Magic Snap */
+    scroll-behavior: smooth;
+}
+
+.verse-card {
+    height: 100vh;
+    width: 100vw;
+    scroll-snap-align: start;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    position: relative;
+    border-bottom: 1px solid #333;
+}
+
+.content {
+    text-align: center;
+    max-width: 600px;
+    animation: fadeIn 0.5s ease;
+}
+
+.arabic {
+    font-size: 2.2rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    direction: rtl;
+    font-family: 'Scheherazade New', serif;
+}
+
+.english {
+    font-size: 1.1rem;
+    color: #b0b0b0;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+.ref {
+    font-size: 0.8rem;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 1rem;
+}
+
+/* Controls */
+.controls {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+button {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+#status {
+    font-size: 0.8rem;
+    color: #888;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
